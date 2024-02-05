@@ -1,0 +1,31 @@
+version: '3'
+services:
+  quote-back:
+    build: ./quote-back
+    volumes:
+      - ./quote-back:/var/www
+    command:  sh -c "php artisan serve --host 0.0.0.0"
+
+  quote-front:
+    build: ./quote-front
+    volumes:
+      - ./quote-front:/tmp/app
+    command:  sh -c "yarn start"
+    depends_on:
+      - quote-back
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8080:80
+    depends_on:
+     - quote-back
+     - quote-front
+    volumes:
+      - ./reverse_proxy.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      - VIRTUAL_HOST=oquery.beanersit.com
+      - LETSENCRYPT_HOST=oquery.beanersit.com
+      - LETSENCRYPT_EMAIL=mail@oquery.beanersit.com
+
+  

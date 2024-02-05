@@ -1,0 +1,6 @@
+[submodule "QuoteStack-back"]
+	path = QuoteStack-back
+	url = git@github.com:poroto82/QuoteStack-back.git
+[submodule "QuoteStack-front"]
+	path = QuoteStack-front
+	url = git@github.com:poroto82/QuoteStack-front.git

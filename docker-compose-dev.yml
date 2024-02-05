@@ -1,13 +1,16 @@
-version: '3'
+version: '3.4'
 services:
   quote-back:
     build: ./QuoteStack-back
     volumes:
       - ./QuoteStack-back:/var/www
-    command:  sh -c "php artisan serve --host 0.0.0.0"
+    command:  sh -c "composer install && php artisan serve --host 0.0.0.0"
 
   quote-front:
-    build: ./QuoteStack-front
+    build:
+      context: ./
+      dockerfile: ./QuoteStack-front
+      target: builder
     volumes:
       - ./QuoteStack-front:/tmp/app
     command:  sh -c "yarn install && yarn start"

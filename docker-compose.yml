@@ -1,16 +1,13 @@
 version: '3'
 services:
   quote-back:
-    build: ./quote-back
+    build: ./QuoteStack-back
     volumes:
-      - ./quote-back:/var/www
+      - .env:/var/www/.env
     command:  sh -c "php artisan serve --host 0.0.0.0"
 
   quote-front:
-    build: ./quote-front
-    volumes:
-      - ./quote-front:/tmp/app
-    command:  sh -c "yarn start"
+    build: ./QuoteStack-front
     depends_on:
       - quote-back
 
@@ -19,13 +16,10 @@ services:
     ports:
       - 8080:80
     depends_on:
-     - quote-back
-     - quote-front
+      - quote-back
     volumes:
       - ./reverse_proxy.conf:/etc/nginx/conf.d/default.conf
-    environment:
-      - VIRTUAL_HOST=oquery.beanersit.com
-      - LETSENCRYPT_HOST=oquery.beanersit.com
-      - LETSENCRYPT_EMAIL=mail@oquery.beanersit.com
 
-  
+
+volumes:
+  laravel-volume:

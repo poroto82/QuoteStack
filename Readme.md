@@ -30,6 +30,7 @@ cd QuoteStack
 Set up environment variables:
 
 Create .env file in the root of the Laravel project based on .env.example.
+
 Configure Laravel database settings.
 Build and run the Docker containers:
 
@@ -42,7 +43,12 @@ docker-compose exec quote-back composer install
 ```
 Migrate and seed the database:
 ```bash
+docker-compose exec quote-back php artisan key:generate
+
 docker-compose exec quote-back php artisan migrate --seed
+
+docker-compose exec quote-back php artisan passport:install
+
 ```
 
 

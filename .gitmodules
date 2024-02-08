@@ -1,6 +1,8 @@
 [submodule "QuoteStack-back"]
 	path = QuoteStack-back
 	url = git@github.com:poroto82/QuoteStack-back.git
+	branch = master
 [submodule "QuoteStack-front"]
 	path = QuoteStack-front
 	url = git@github.com:poroto82/QuoteStack-front.git
+	branch = master

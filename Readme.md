@@ -28,8 +28,10 @@ git clone https://github.com/poroto82/QuoteStack.git --recurse-submodules
 cd QuoteStack
 ```
 Set up environment variables:
+Theres already an env file in this project with te route to laravel sqlite database
 
-Create .env file in the root of the Laravel project based on .env.example.
+Theres an extra option on env file to control the cache TTL of the quotes
+QUOTE_CACHE_TTL=
 
 Configure Laravel database settings.
 Build and run the Docker containers:

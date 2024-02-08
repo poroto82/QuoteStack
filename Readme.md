@@ -53,6 +53,13 @@ docker-compose exec quote-back php artisan passport:install
 
 ```
 
+# Five Random Quotes Command
+
+to run this command the line would be:
+```bash
+docker-compose exec quote-back php artisan app:Get-FiveRandomQuotes {--new}
+```
+
 
 Folder Structure
 Briefly explain the structure of your project's folders and key files.
